@@ -35,7 +35,10 @@ export default class TouchXExtension extends Extension {
 
                 this._icon.set_gicon(this._oskDisabledIcon);
                 this._settings.set_boolean('lastoskon', false);
-                OsdWindowManager.show(-1, this._oskDisabledIcon, "OSK Disabled");
+                if (OsdWindowManager.showAll)
+                    OsdWindowManager.showAll(this._oskDisabledIcon, "OSK Disabled");
+                else
+                    OsdWindowManager.show(-1, this._oskDisabledIcon, "OSK Disabled");
                 // console.log('Touch mode disabled');
             }
             else
@@ -45,7 +48,10 @@ export default class TouchXExtension extends Extension {
 
                 this._icon.set_gicon(this._oskEnabledIcon);
                 this._settings.set_boolean('lastoskon', true);
-                OsdWindowManager.show(-1, this._oskEnabledIcon, "OSK Enabled");
+                if (OsdWindowManager.showAll)
+                    OsdWindowManager.showAll(this._oskEnabledIcon, "OSK Enabled");
+                else
+                    OsdWindowManager.show(-1, this._oskEnabledIcon, "OSK Enabled");
                 // console.log('Touch mode enabled');
             }
 
